@@ -1,10 +1,41 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application  xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:AppWithMenu.ViewModel;assembly=AppWithMenu"
              x:Class="AppWithMenu.App">
   <Application.Resources>
-
     <!-- Application resource dictionary -->
-
+    <ResourceDictionary>
+      <viewModel:ViewModelLocator x:Key="Locator" />
+      <ControlTemplate x:Key="MenuTemplate">
+        <Grid x:Name="Menu">
+          <Grid x:Name="SidebarContainer">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="0" x:Name="SideBarColumn"/>
+              <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout BackgroundColor="Blue" Grid.Column="0" >
+              <ListView ItemsSource="{Binding Items}" se>
+                <ListView.ItemTemplate>
+                  <DataTemplate>
+                    <TextCell Text="{Binding}"></TextCell>
+                  </DataTemplate>
+                </ListView.ItemTemplate>
+              </ListView>
+            </StackLayout>
+            <StackLayout Grid.Column="1">
+              <Grid HeightRequest="32">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto"/>
+                  <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Aspect="AspectFit"  x:Name="MenuButton"  Source="hmenu.png"/>
+              </Grid>
+              <ContentPresenter  />
+            </StackLayout>
+          </Grid>
+        </Grid>
+      </ControlTemplate>
+    </ResourceDictionary>
   </Application.Resources>
 </Application>

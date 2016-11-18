@@ -30,5 +30,7 @@ namespace AppWithMenu
         {
             // Handle when your app resumes
         }
+
+       
     }
 }
